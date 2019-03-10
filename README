@@ -1,0 +1,83 @@
+Useful ruby scripts for the JQuiz application.
+
+Get vocabulary lists from webpages on the Internet!
+
+The web page https://japanesetest4you.com/ is a very nice web page with a lot of information for mastering Japanese.
+However, learning vocabulary from a web page can be tedious and inefficient.
+The scripts in this folder allow you to get the vocabulary from a web page and practicing it using the Jquiz application.
+
+At the same time, these scripts demonstrate how easy is to use the nokogiri tool for extracting data on a web page.
+
+Scripts
+===============
+
+
+-----------------------------------------------------------------------
+vocab_extractor.rb  <japanese4you vocabulary page> <number of iterations>
+-----------------------------------------------------------------------
+Vocabulary extractor
+
+For example, lets extract the N2 vocabulary from japanesetest4you.com:
+
+./vocab_extractor.rb https://japanesetest4you.com/flashcard/category/learn-japanese-vocabulary/learn-japanese-n2-vocabulary/ 76
+
+76 is the number of webpages to scan.
+You will get a big out.csv ready to be used with Jquiz.
+
+If you want to split the file into smaller files you can use the split command:
+split -l <number of lines per file> out.csv
+
+
+Here a list of vocabulary sections to extract:
+
+N5: https://japanesetest4you.com/flashcard/category/learn-japanese-vocabulary/learn-japanese-n5-vocabulary/
+N4: https://japanesetest4you.com/flashcard/category/learn-japanese-vocabulary/learn-japanese-n4-vocabulary/
+N3: https://japanesetest4you.com/flashcard/category/learn-japanese-vocabulary/learn-japanese-n3-vocabulary/
+N2: https://japanesetest4you.com/flashcard/category/learn-japanese-vocabulary/learn-japanese-n2-vocabulary/
+N1: https://japanesetest4you.com/flashcard/category/learn-japanese-vocabulary/learn-japanese-n1-vocabulary/
+
+
+-------------------------------------------------------------------------------
+grammar_extractor.csv  <japanese4you grammar page>
+-------------------------------------------------------------------------------
+Grammar extractor
+
+For example, lets extract the N2 grammar from japanesetest4you.com:
+
+./grammar_extractor.rb https://japanesetest4you.com/jlpt-n2-grammar-list/
+
+You will get a big out.csv ready to be used with Jquiz.
+
+If you want to split the file into smaller files you can use the split command:
+split -l <number of lines per file> out.csv
+
+Here a list of grammar sections to extract:
+
+N5: https://japanesetest4you.com/jlpt-n5-grammar-list/
+N4: https://japanesetest4you.com/jlpt-n4-grammar-list/
+N3: https://japanesetest4you.com/jlpt-n3-grammar-list/
+N2: https://japanesetest4you.com/jlpt-n2-grammar-list/
+N1: https://japanesetest4you.com/jlpt-n1-grammar-list/
+
+
+-----------------------------------------------------------------------------------
+breen_extractor.rb <file with words in kanji>
+-----------------------------------------------------------------------------------
+Creates a vocabulary list from a list of words in kanji.
+
+Let's suppose that you have a list of words in kanji and you want to learn their meaning and pronunciation.
+With this script, you will get a vocabulary list ready to be used with Jquiz!
+
+The words in the input list should be separated by a new line.
+Like this:
+
+契約
+当社
+不利
+不満
+不平
+不安
+
+This script uses Jim Breen's WWWJDIC to get the meaning and the furigana.
+
+
